@@ -6,7 +6,7 @@ const cookieParser=require('cookie-parser');
 
 const app=express();
 const userRoutes=require('./routes/user.routes');
-
+const captainRoutes=require('./routes/captian.routes');
 const connectToDb=require('./db/db');
 connectToDb();
 
@@ -23,6 +23,7 @@ app.get("/",(req,res,next)=>{
 })
 
 app.use('/user',userRoutes);
+app.use('/captains',captainRoutes);
 
 
 app.listen(PORT,()=>{

@@ -5,17 +5,17 @@ const blackListTokenModel=require('../models/blackListToken.model')
 
 module.exports.registerUser=async(req,res,next)=>{
     
-    console.log("hello");
+
     const errors=validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
-    console.log("sencond");
+
     const {fullname,email,password}=req.body;
     const hashedPassword=await userModel.hashPassword(password);
-    console.log('third');
+
     const createdUser=await userService.createUser({firstname:fullname.firstname,lastname:fullname.lastname,email,password:hashedPassword});
-    console.log('fourth');
+
     const token=createdUser.generateAuthToken();
     res.status(201).json({token,createdUser});
 }
