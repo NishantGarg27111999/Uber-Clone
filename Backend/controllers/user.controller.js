@@ -17,6 +17,7 @@ module.exports.registerUser=async(req,res,next)=>{
     const createdUser=await userService.createUser({firstname:fullname.firstname,lastname:fullname.lastname,email,password:hashedPassword});
 
     const token=createdUser.generateAuthToken();
+    res.cookie('token',token);
     res.status(201).json({token,createdUser});
 }
 
@@ -41,7 +42,7 @@ module.exports.loginUser=async(req,res,next)=>{
 
     const token=user.generateAuthToken();
     res.cookie('token',token);
-    return res.status(201).json({user,token});
+    return res.status(200).json({user,token});
 }
 
 module.exports.getUserProfile=async(req,res,next)=>{
