@@ -8,12 +8,13 @@ import CaptainSignup from './pages/CaptainSignup'
 import Home from './pages/Home' 
 import ProtectedRoute from './pages/ProtectedRoute'
 import CaptainHome from './pages/CaptainHome'
+import Riding from './pages/Riding'
 
 function App() {
   
 
   return (
-    <div>
+    <div className='h-screen'>
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
           <Route path='/userLogin' element={<UserLogin/>}/>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/captain-signup' element={<CaptainSignup/>}/>
           <Route path='/home' element={<ProtectedRoute navigateRoute='/userLogin' isCaptain={false}><Home/></ProtectedRoute>  }/>
           <Route path='/captain-home' element={<ProtectedRoute navigateRoute='/captain-login' isCaptain={true}><CaptainHome/></ProtectedRoute>  }/>
+          <Route path='/riding' element={<ProtectedRoute navigateRoute='/userLogin' isCaptain={false}><Riding/></ProtectedRoute> }/>
         </Routes>
     </div>
   )

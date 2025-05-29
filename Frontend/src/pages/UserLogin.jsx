@@ -8,7 +8,7 @@ function UserLogin() {
     
 
     return (
-        <div className='h-screen flex flex-col p-7 justify-between sm:bg-gradient-to-tr from-blue-300 to-red-500'>
+        <div className='h-screen flex flex-col p-7 justify-between sm:bg-gradient-to-tr from-blue-300 to-red-500 overflow-hidden'>
 
             <div >
                 <img src={uberLogo} alt="" className='w-18' />
