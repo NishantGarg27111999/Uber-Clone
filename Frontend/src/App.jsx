@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import ProtectedRoute from './pages/ProtectedRoute'
 import CaptainHome from './pages/CaptainHome'
 import Riding from './pages/Riding'
+import CaptainRiding from './pages/CaptainRiding'
 
 function App() {
   
@@ -24,6 +25,8 @@ function App() {
           <Route path='/home' element={<ProtectedRoute navigateRoute='/userLogin' isCaptain={false}><Home/></ProtectedRoute>  }/>
           <Route path='/captain-home' element={<ProtectedRoute navigateRoute='/captain-login' isCaptain={true}><CaptainHome/></ProtectedRoute>  }/>
           <Route path='/riding' element={<ProtectedRoute navigateRoute='/userLogin' isCaptain={false}><Riding/></ProtectedRoute> }/>
+          <Route path='/captain-riding' element={<ProtectedRoute navigateRoute='/captain-ogin' isCaptain={false}><CaptainRiding/></ProtectedRoute> }/>
+        
         </Routes>
     </div>
   )
