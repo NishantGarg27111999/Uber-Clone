@@ -2,7 +2,7 @@ const axios=require('axios');
 const captainModel = require('../models/captain.model');
 
 module.exports.getAddressCoordinate=async( address )=>{
-    const apikey='AlzaSyVS9_G-YbIHMT2pXGyjJoIF-Ff1uIFYmlH';
+    const apikey='';
     const url=`https://maps.gomaps.pro/maps/api/geocode/json?key=${apikey}&address=${address}`;
 
     try{
@@ -26,7 +26,7 @@ module.exports.getAddressCoordinate=async( address )=>{
 }
 
 module.exports.getDistanceTime=async(origin,destination)=>{
-    const apikey='AlzaSyVS9_G-YbIHMT2pXGyjJoIF-Ff1uIFYmlH';
+    const apikey='';
     const url=`https://maps.gomaps.pro/maps/api/distancematrix/json?destinations=${destination}&origins=${origin}&key=${apikey}`;
 
     try{
@@ -52,7 +52,7 @@ module.exports.getDistanceTime=async(origin,destination)=>{
 }
 
 module.exports.getAutoCompleteSuggestions=async(input)=>{
-    const apikey='AlzaSykFAncaFFM9Eg7FYPtlh42IP29t';
+    const apikey='';
     const url=`https://maps.gomaps.pro/maps/api/place/autocomplete/json?input=${input}&key=${apikey}`;
 
     try{
