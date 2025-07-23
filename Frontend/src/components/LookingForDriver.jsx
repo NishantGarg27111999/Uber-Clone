@@ -1,10 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faAngleDown, faWallet } from '@fortawesome/free-solid-svg-icons'
 import WaitingForDriver from "./WaitingForDriver";
+import { rideDataContext } from "../contexts/RideContext";
+import { useContext, useEffect } from "react";
+import { socketDataContext } from "../contexts/SocketContext";
 
-function LookingForDriver({ lookingForDriverRef, vehicleImage,PanelOpenClose,waitingForDriverRef }) {
+function LookingForDriver({ lookingForDriverRef, vehicleImage,PanelOpenClose,waitingForDriverRef,setRideInfo }) {
+    
+    const {socket}=useContext(socketDataContext);
+    const {ride}=useContext(rideDataContext);
+
+    
+
+    
+
     return (
-        <div ref={lookingForDriverRef} className='absolute bottom-0 w-screen overflow-hidden py-5   px-4   transition-all duration-1500 ease-in-out overflow-hidden bg-white rounded-xl translate-y-full'>
+        <div ref={lookingForDriverRef} className='absolute bottom-0 w-screen  py-5   px-4   transition-all duration-1500 ease-in-out overflow-hidden bg-white rounded-xl translate-y-full'>
             <style>
                 {
                     `
@@ -37,10 +48,10 @@ function LookingForDriver({ lookingForDriverRef, vehicleImage,PanelOpenClose,wai
             </div>
 
             <div className="flex flex-col items-center gap-2">
-                <img src={`/src/assets/${vehicleImage}.jpg`} className="h-20  mb-4" />
-                <div className="w-full text-lg font-medium p-2 flex items-center gap-4 border-b-2 border-b-gray-300"><FontAwesomeIcon icon={faLocationDot} className='  text-green-700 text-xl' /><div>,gn;kja;g</div> </div>
-                <div className="w-full text-lg font-medium p-2 flex items-center gap-4 border-b-2 border-b-gray-300"> <FontAwesomeIcon icon={faLocationDot} className=' text-red-700 text-xl' /><div>,gn;kja;g</div></div>
-                <div className="w-full text-lg font-medium p-2 flex items-center gap-4"> <FontAwesomeIcon icon={faWallet} className=' ' /><div>₹ 298</div></div>
+                <img src={`/src/assets/${ride.vehicleType}.jpg`} className="h-20  mb-4" />
+                <div className="w-full text-lg font-medium p-2 flex items-center gap-4 border-b-2 border-b-gray-300"><FontAwesomeIcon icon={faLocationDot} className='  text-green-700 text-xl' /><div>{ride.pickUp}</div> </div>
+                <div className="w-full text-lg font-medium p-2 flex items-center gap-4 border-b-2 border-b-gray-300"> <FontAwesomeIcon icon={faLocationDot} className=' text-red-700 text-xl' /><div>{ride.destination}</div></div>
+                <div className="w-full text-lg font-medium p-2 flex items-center gap-4"> <FontAwesomeIcon icon={faWallet} className=' ' /><div>₹ {ride.fare[ride.vehicleType]}</div></div>
                 
             </div>
         </div>

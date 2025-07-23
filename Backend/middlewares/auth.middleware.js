@@ -20,8 +20,12 @@ module.exports.authUser=async(req,res,next)=>{
     }
     try{
         const decoded=jwt.verify(token,process.env.JWT_SECRET);
-
+        console.log(decoded._id);
         const user=await userModel.findById(decoded._id);
+        console.log("auth: ",user);
+        if(!user){
+            return res.status(401).json({message: 'Unauthorized access'});
+        }
         req.user=user;
         return next();
     }

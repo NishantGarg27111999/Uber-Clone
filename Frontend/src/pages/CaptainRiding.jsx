@@ -3,6 +3,7 @@ import map from '../assets/map.gif'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
 import FinishRide from '../components/FinishRide';
+import { useLocation } from 'react-router-dom';
 
 function CaptainRiding() {
     function PanelOpenClose(panelRef) {
@@ -10,6 +11,9 @@ function CaptainRiding() {
     }
 
     const finishRidePanelRef=useRef(null);
+
+    const location=useLocation();
+        const ride=location.state?.ride;
 
     return (
         <div className='h-screen'>
@@ -24,7 +28,7 @@ function CaptainRiding() {
                 </div>
             </div>
 
-            <FinishRide finishRidePanelRef={finishRidePanelRef}/>
+            <FinishRide finishRidePanelRef={finishRidePanelRef} ride={ride}/>
         </div>
     )
 }

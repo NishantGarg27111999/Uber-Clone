@@ -5,16 +5,24 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import UserContext from './contexts/UserContext.jsx'
 import CaptainContext from './contexts/CaptainContext.jsx'
+import RideContext from './contexts/RideContext.jsx'
+import SocketContext from './contexts/SocketContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CaptainContext>
-      <UserContext>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </UserContext>
-    </CaptainContext>
+    
+      <RideContext>
+        <CaptainContext>
+          <UserContext>
+            <SocketContext>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+            </SocketContext>
+          </UserContext>
+        </CaptainContext>
+      </RideContext>
+    
 
-  </StrictMode>,
+  </StrictMode>
 )

@@ -13,9 +13,15 @@ module.exports.registerUser=async(req,res,next)=>{
 
     const {fullname,email,password}=req.body;
     const hashedPassword=await userModel.hashPassword(password);
+    const user=userModel.findOne({email});
+    if(user){
+        res.status(403).json({message: "User already exist"});
+        return;
+    }
 
     const createdUser=await userService.createUser({firstname:fullname.firstname,lastname:fullname.lastname,email,password:hashedPassword});
 
+    
     const token=createdUser.generateAuthToken();
     res.cookie('token',token);
     res.status(201).json({token,createdUser});
@@ -46,6 +52,7 @@ module.exports.loginUser=async(req,res,next)=>{
 }
 
 module.exports.getUserProfile=async(req,res,next)=>{
+    console.log("getUserProfile:", req.user);
     res.status(200).json(req.user);
 }
 

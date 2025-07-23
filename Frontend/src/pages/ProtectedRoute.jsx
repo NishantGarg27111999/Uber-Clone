@@ -30,7 +30,8 @@ function ProtectedRoute({children,navigateRoute,isCaptain}){
     .then((response)=>{
         // console.log('captain');
         if(response.status==200){
-            setCaptain(response.data.captain);
+            console.log(response.data);
+            setCaptain(response.data);
 
         }
     })
@@ -49,7 +50,9 @@ function ProtectedRoute({children,navigateRoute,isCaptain}){
     .then((response)=>{
         // console.log('user');
         if(response.status==200){
-            setUser(response.data.user);
+            console.log('user set chala');
+            console.log(response);
+            setUser(response.data);
 
         }
     })
